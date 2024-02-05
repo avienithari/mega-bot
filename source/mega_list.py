@@ -53,13 +53,12 @@ def get_mega_list():
         "diancie-mega",
     ]
     primal_types = {
-        "primal groudon": ["grass", "fire", "ground"],
-        "primal kyogre": ["water", "bug", "electric"]
+        "primal groudon": ("grass", "fire", "ground"),
+        "primal kyogre": ("water", "bug", "electric")
     }
 
     mega_types = {}
     for m in mega:
-        mega_type = []
         pokemon = requests.get(f"https://pokeapi.co/api/v2/pokemon/{m}").json()
         mega_name = pokemon["name"].split("-")
         if len(mega_name) == 2:
@@ -71,12 +70,9 @@ def get_mega_list():
             mega_name = " ".join(mega_name)
 
         if len(pokemon["types"]) == 1:
-            mega_type.append(pokemon["types"][0]["type"]["name"])
+            mega_types[mega_name] = (pokemon["types"][0]["type"]["name"],)
         else:
-            mega_type.append(pokemon["types"][0]["type"]["name"])
-            mega_type.append(pokemon["types"][1]["type"]["name"])
-
-        mega_types[mega_name] = mega_type
+            mega_types[mega_name] = (pokemon["types"][0]["type"]["name"], pokemon["types"][1]["type"]["name"])
 
     mega_types.update(primal_types)
     return mega_types

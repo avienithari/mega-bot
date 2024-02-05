@@ -2,7 +2,7 @@ import os
 import discord
 from dotenv import load_dotenv
 from discord.ext import commands
-from source import mega_list
+from source import mega_list, set_mega
 
 load_dotenv(".env")
 token = os.getenv("DISCORD_TOKEN")
@@ -13,5 +13,10 @@ intents.message_content = True
 mega_types = mega_list.get_mega_list()
 
 bot = commands.Bot(command_prefix="!", intents=intents)
+
+@bot.command(name="setmega")
+@commands.has_permissions(administrator=True)
+async def setmega(ctx, *args):
+    await ctx.channel.send(set_mega.set_mega(mega_types, *args))
 
 bot.run(str(token))
