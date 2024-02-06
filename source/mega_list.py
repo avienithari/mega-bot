@@ -46,7 +46,6 @@ def get_mega_list():
         "glalie-mega",
         "salamence-mega",
         "metagross-mega",
-        "rayquaza-mega",
         "lopunny-mega",
         "gallade-mega",
         "audino-mega",
@@ -54,7 +53,8 @@ def get_mega_list():
     ]
     primal_types = {
         "primal groudon": ("grass", "fire", "ground"),
-        "primal kyogre": ("water", "bug", "electric")
+        "primal kyogre": ("water", "bug", "electric"),
+        "mega rayquaza": ("flying", "dragon", "psychic")
     }
 
     mega_types = {}
