@@ -36,9 +36,13 @@ def pick_mega(mega_types, type_list):
             except IndexError:
                 continue
 
-    return Counter(mega)
+    return Counter(mega).most_common(3)
+
+def message(sorted_mega):
+    return f"Best mega coverage is provided by:\n{sorted_mega[0][0].title()}\n{sorted_mega[1][0].title()}\n{sorted_mega[2][0].title()}\n"
 
 def set_mega(mega_types, *args):
     event_spawns = list(args)
     type_list = get_typings(event_spawns)
-    return pick_mega(mega_types, type_list)
+    sorted_mega = pick_mega(mega_types, type_list)
+    return message(sorted_mega)
