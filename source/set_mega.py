@@ -56,3 +56,12 @@ def send_mega():
         message = file.readlines()
 
     return f"{message[0]}{message[1]}{message[2]}{message[3]}"
+
+def default():
+    with open("source/default", "r") as file:
+        message = file.readlines()
+    with open("source/current_mega", "w") as file:
+        for line in message:
+            file.write(line)
+
+    return f"{message[0]}{message[1]}{message[2]}{message[3]}"
