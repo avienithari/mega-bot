@@ -1,4 +1,5 @@
 .env
+.DS_STORE
 /__pycache__/
 /source/__pycache__/
 /source/current_mega

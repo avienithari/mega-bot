@@ -39,11 +39,14 @@ def pick_mega(mega_types, type_list):
     return Counter(mega).most_common(3)
 
 def message(sorted_mega):
-    message = f"Best mega coverage is provided by:\n{sorted_mega[0][0].title()}\n{sorted_mega[1][0].title()}\n{sorted_mega[2][0].title()}\n"
-    with open("source/current_mega", "w") as file:
-        file.write(message)
+    try:
+        message = f"Best mega coverage is provided by:\n{sorted_mega[0][0].title()}\n{sorted_mega[1][0].title()}\n{sorted_mega[2][0].title()}\n"
+        with open("source/current_mega", "w") as file:
+            file.write(message)
 
-    return message
+        return message
+    except IndexError:
+        return "One or more Pokémon were not found. Check your spelling."
 
 def set_mega(mega_types, *args):
     event_spawns = list(args)
