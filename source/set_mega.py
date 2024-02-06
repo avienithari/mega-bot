@@ -19,10 +19,8 @@ def get_typings(spawn_list):
 
 def pick_mega(mega_types, type_list):
     mega = []
-    counter = 0
     for pokemon_type in type_list:
         for mega_pokemon_type in mega_types.keys():
-            counter += 1
             try:
                 if (pokemon_type[0] == mega_types[mega_pokemon_type][0] or
                     pokemon_type[0] == mega_types[mega_pokemon_type][1]):

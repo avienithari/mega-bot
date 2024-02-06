@@ -23,7 +23,8 @@ async def setmega(ctx, *args):
 async def mega(ctx):
     await ctx.channel.send(set_mega.send_mega())
 
-@bot.command(name="default")
+@commands.has_permissions(administrator=True)
+@bot.command(name="setdefault")
 async def default(ctx):
     await ctx.channel.send(set_mega.default())
 
