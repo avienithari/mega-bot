@@ -19,4 +19,8 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 async def setmega(ctx, *args):
     await ctx.channel.send(set_mega.set_mega(mega_types, *args))
 
+@bot.command(name="mega")
+async def mega(ctx):
+    await ctx.channel.send(set_mega.send_mega())
+
 bot.run(str(token))

@@ -39,10 +39,20 @@ def pick_mega(mega_types, type_list):
     return Counter(mega).most_common(3)
 
 def message(sorted_mega):
-    return f"Best mega coverage is provided by:\n{sorted_mega[0][0].title()}\n{sorted_mega[1][0].title()}\n{sorted_mega[2][0].title()}\n"
+    message = f"Best mega coverage is provided by:\n{sorted_mega[0][0].title()}\n{sorted_mega[1][0].title()}\n{sorted_mega[2][0].title()}\n"
+    with open("source/current_mega", "w") as file:
+        file.write(message)
+
+    return message
 
 def set_mega(mega_types, *args):
     event_spawns = list(args)
     type_list = get_typings(event_spawns)
     sorted_mega = pick_mega(mega_types, type_list)
     return message(sorted_mega)
+
+def send_mega():
+    with open("source/current_mega", "r") as file:
+        message = file.readlines()
+
+    return f"{message[0]}{message[1]}{message[2]}{message[3]}"
